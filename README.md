@@ -1,6 +1,4 @@
-# exercise
-
-This is KIAN wordpress template and i convert it to Vue.js.
+# This is KIAN wordpress template and i convert it to Vue.js with Unocss.
 
 ## Recommended IDE Setup
 
