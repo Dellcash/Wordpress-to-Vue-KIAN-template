@@ -24,12 +24,23 @@ const navs = ref([
 
 <template>
 	<header
-		class="flex flex-col items-center justify-center sm:mt-2"
+		class="flex flex-col items-center justify-center sm:mt-2 xl:px-20"
 		md="flex-row justify-between p-5"
 	>
 		<h1 text="#4362c1 base sm:1.7rem" m="y-3 sm:y-4">عنوان سایت شما...</h1>
+
+		<ul class="flex-row justify-center hidden sm:my-5 xl:flex">
+			<li v-for="nav in navs" :key="nav" m="l-3 sm:l-5 last:l-0">
+				<RouterLink
+					:to="nav.to"
+					class="px-1 py-1 tracking-tighter text-10px sm:px-2 sm:text-13px"
+					exact-active-class="border-t-2 border-#4362c1 duration-300 text-#4362c1"
+					>{{ nav.title }}</RouterLink
+				>
+			</li>
+		</ul>
 		<div>
-			<ul class="flex flex-row justify-center sm:my-5">
+			<ul class="flex flex-row justify-center sm:my-5 xl:hidden">
 				<li v-for="nav in navs" :key="nav" m="l-3 sm:l-5 last:l-0">
 					<RouterLink
 						:to="nav.to"
