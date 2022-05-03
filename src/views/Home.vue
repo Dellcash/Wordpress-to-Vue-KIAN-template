@@ -1,94 +1,164 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+import building from "../assets/images/img_4.png";
+import note from "../assets/images/img_5.png";
+import pen from "../assets/images/img_6.png";
+import compass from "../assets/images/img_7.png";
+
+const services = ref([
+	{
+		img: building,
+		title: "مدلسازی اطلاعات ساختمان",
+		description:
+			"اغلب اوقات ماهیت بدنی و عملکردی هر پروژه ساختمانی باید به صورت دیجیتالی ارائه شود.",
+	},
+	{
+		img: note,
+		title: "خدمات ساختمانی",
+		description:
+			"مشتریان ما عاشق سرعت / کیفیتی هستند که در طی هر یک از مراحل اصلی ساخت و ساز نشان می دهیم!",
+	},
+	{
+		img: pen,
+		title: "خدمات قبل از ساخت",
+		description:
+			"ما قبل از شروع هرگونه ساخت و ساز ، وقت خود را در برنامه ریزی اولیه می گذاریم تا تمام مالی و کارایی را به تعادل برساند.",
+	},
+	{
+		img: compass,
+		title: "مدیریت ساخت و ساز",
+		description:
+			"مدیریت پروژه ساخت و ساز ضروری است. ما برای این کار بیشترین زمان و تکرار چرخه های زندگی را داریم.",
+	},
+]);
+</script>
 
 <template>
 	<div>
 		<!-- BANNER -->
-		<div class="mt-4 bg-#4362c1 items-center relative" flex="~ col">
-			<img
-				src="../assets/images/img_1.jpg"
-				alt=""
-				class="object-cover w-full h-40 sm:h-60 md:h-full"
-			/>
-			<div class="py-5 text-center md:pb-15 xl:pb-40 xl:pt-10">
-				<h1
-					class="pb-3 leading-normal sm:leading-15 md:pb-5"
-					text="2xl white sm:4xl md:2.3rem"
-				>
+		<div class="banner">
+			<img src="../assets/images/img_1.jpg" />
+			<div>
+				<h1>
 					عنوان خدمت <br md:hidden />
 					اصلی
 				</h1>
-				<p text="10px white sm:14px md:16px" px-3 sm:w-468px md:w-768px>
+				<p>
 					این سال ما از ساخت و سازهای پیچیده بیشتر از گذشته استفاده می کنیم.
 				</p>
 			</div>
 		</div>
 
-		<!-- FIRST -->
-		<div
-			flex="~ col xl:row"
-			items-center
-			space="y-3 sm:y-10 md:y-0"
-			md:mt-10
-			xl:px-25
-			xl:absolute
-			xl:top-48rem
-			class="2xl:top-53rem"
-		>
-			<div
-				class="flex items-end p-4 md:p-2"
-				sm:w-468px
-				md:w-768px
-				md:px-6rem
-				xl:w-full
-				xl:px-0
-			>
+		<!-- FIRST SECTION -->
+		<section class="section-one">
+			<!-- TOP -->
+			<div class="div">
 				<img
 					src="../assets/images/img_2.jpg"
 					class="w-50% h-50%"
 					md="w-50% h-50%"
 				/>
-				<div
-					class="mb-5 pr-4 sm:pr-7 md:w50% md:pr-15 md:pb-10 xl:pb-5 xl:pr-5"
-				>
-					<h1 mb-3 tracking-tight sm:text-18px md:mb-7>خانه خود را بسازید</h1>
-					<p text="10px sm:14px" tracking-tighter xl:pl-5>
+				<div>
+					<h1>خانه خود را بسازید</h1>
+					<p>
 						در راه کار خود چه چیزی را پشت سر می گذارید؟ معماری در همه جا در
 						زندگی روزمره وجود دارد.
 					</p>
 				</div>
 			</div>
-			<div
-				class="flex items-end p-4 md:p-2"
-				sm:w-468px
-				md:w-768px
-				md:px-6rem
-				xl:w-full
-				xl:px-0
-			>
+
+			<!-- BOTTOM -->
+			<div class="div">
 				<img
 					src="../assets/images/img_3.jpg"
-					class="w-50% h-50%"
-					md:hidden
-					xl:block
+					class="w-50% h-50% md:hidden xl:block"
 				/>
-				<div
-					class="mb-5 pr-4 sm:pr-7 md:w50% md:pl-15 md:pb-10 xl:pb-5 xl:pl-5"
-				>
-					<h1 mb-3 tracking-tight sm:text-18px md:mb-7>
-						ایجاد معماری خیره کننده
-					</h1>
-					<p text="10px sm:14px" tracking-tighter>
+				<div class="md:!pr-0 md:w50% md:!pl-15 xl:!pr-5 xl:!pl-0">
+					<h1>معماری خیره کننده</h1>
+					<p>
 						به طور معمول ، معماران به شدت به جنبه هایی مانند فضا ، زمان ، پول و
 						محدودیت های دیگر وابسته هستند.
 					</p>
 				</div>
 				<img
 					src="../assets/images/img_3.jpg"
-					class="w-50% h-50% hidden"
+					class="w-50% h-50% hidden xl:hidden"
 					md="w-50% h-50% block"
-					xl:hidden
 				/>
 			</div>
-		</div>
+		</section>
+
+		<!-- SECOND SECTION -->
+		<section flex flex-col items-center>
+			<!-- PART ONE -->
+			<div class="bg-#4362c1 m-4 px-10 pt-5 pb-10 sm:pr-20 sm:pl-15 sm:w-440px">
+				<h1 text-white sm:text-3xl>خدمات ما</h1>
+
+				<!--  -->
+				<div
+					v-for="service in services"
+					:key="service"
+					flex
+					items-start
+					mt-7
+					sm:mt-14
+				>
+					<img :src="service.img" alt="" w-14px sm:w-20px />
+					<div mr-3>
+						<h6 text-white text-10px mb-5 sm:text-14px sm:mb-8>
+							{{ service.title }}
+						</h6>
+						<p text-10px text-gray-1 tracking-tighter sm:text-13px>
+							{{ service.description }}
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- PART TWO -->
+			<div></div>
+		</section>
 	</div>
 </template>
+
+<style lang="scss" scoped>
+.banner {
+	@apply flex flex-col mt-4 items-center relative bg-#4362c1;
+
+	img {
+		@apply object-cover w-full h-40 sm:h-60 md:h-full;
+	}
+
+	div {
+		@apply py-5 text-center md:pb-15 xl:pb-40 xl:pt-10;
+
+		h1 {
+			@apply pb-3 leading-normal sm:leading-15 md:pb-5 text-2xl text-white sm:text-4xl md:text-2.3rem;
+		}
+
+		p {
+			@apply text-10px text-white px-3 w-320px sm:text-14px sm:w-468px md:text-16px md:w-768px;
+		}
+	}
+}
+
+.section-one {
+	@apply flex flex-col items-center space-y-3 mb-5 sm:space-y-10 md:space-y-0 md:mt-10 xl:absolute xl:flex-row xl:px-25 xl:top-44rem 2xl:top-47rem;
+
+	.div {
+		@apply flex items-end p-4 w-320px sm:w-468px md:p-2 md:w-768px md:px-6rem xl:w-full xl:px-0;
+
+		div {
+			@apply mb-5 pr-4 sm:pr-7 md:pr-0 md:w50% md:pr-15 md:pb-10 xl:pb-5 xl:pr-5;
+
+			h1 {
+				@apply text-14px mb-3 tracking-tight sm:text-18px md:mb-7;
+			}
+
+			p {
+				@apply text-10px tracking-tighter xl:pl-5 sm:text-14px;
+			}
+		}
+	}
+}
+</style>
