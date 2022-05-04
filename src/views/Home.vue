@@ -1,9 +1,17 @@
 <script setup>
 import { ref } from "vue";
+
+// ICONS
 import building from "../assets/images/img_4.png";
 import note from "../assets/images/img_5.png";
 import pen from "../assets/images/img_6.png";
 import compass from "../assets/images/img_7.png";
+
+// SECTION TWO IMGs
+import firstImg from "../assets/images/img_8.jpg";
+import secImg from "../assets/images/img_9.jpg";
+import thridImg from "../assets/images/img_10.jpg";
+import forthImg from "../assets/images/img_11.jpg";
 
 const services = ref([
 	{
@@ -31,10 +39,37 @@ const services = ref([
 			"مدیریت پروژه ساخت و ساز ضروری است. ما برای این کار بیشترین زمان و تکرار چرخه های زندگی را داریم.",
 	},
 ]);
+
+const plans = ref([
+	{
+		img: firstImg,
+		title: "تجاری",
+		description:
+			"این احتمالاً متنوع ترین رده ساختمانی است که می توان در آن کار کرد. اما ما ...",
+	},
+	{
+		img: secImg,
+		title: "فرهنگی / مادام العمر",
+		description:
+			"کار بر روی یک ساختمان مهم اجتماعی ، مانند یک پارک ، شامل موارد ...",
+	},
+	{
+		img: thridImg,
+		title: "داده ها / فن آوری",
+		description:
+			"در حالی که ساخت یک ساختمان چهارم برای یک شرکت فناوری اطلاعات نسبتاً آسان است ...",
+	},
+	{
+		img: forthImg,
+		title: "آموزشی",
+		description:
+			"موسسات آموزشی می توانند بسیار خلاق تر از مدرسه معمولی شما باشند ...",
+	},
+]);
 </script>
 
 <template>
-	<div>
+	<main>
 		<!-- BANNER -->
 		<div class="banner">
 			<img src="../assets/images/img_1.jpg" />
@@ -89,36 +124,45 @@ const services = ref([
 		</section>
 
 		<!-- SECOND SECTION -->
-		<section flex flex-col items-center>
-			<!-- PART ONE -->
-			<div class="bg-#4362c1 m-4 px-10 pt-5 pb-10 sm:pr-20 sm:pl-15 sm:w-440px">
-				<h1 text-white sm:text-3xl>خدمات ما</h1>
+		<section class="section-two">
+			<div class="into-section">
+				<!-- PART ONE -->
+				<div class="part-one">
+					<h1 text="white sm:3xl">خدمات ما</h1>
 
-				<!--  -->
-				<div
-					v-for="service in services"
-					:key="service"
-					flex
-					items-start
-					mt-7
-					sm:mt-14
-				>
-					<img :src="service.img" alt="" w-14px sm:w-20px />
-					<div mr-3>
-						<h6 text-white text-10px mb-5 sm:text-14px sm:mb-8>
-							{{ service.title }}
-						</h6>
-						<p text-10px text-gray-1 tracking-tighter sm:text-13px>
-							{{ service.description }}
-						</p>
+					<!--  -->
+					<div v-for="service in services" :key="service" class="into-one">
+						<img :src="service.img" alt="" w="14px sm:20px" />
+						<div mr-3>
+							<h6>
+								{{ service.title }}
+							</h6>
+							<p>
+								{{ service.description }}
+							</p>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<!-- PART TWO -->
-			<div></div>
+				<!-- PART TWO -->
+				<div class="part-two">
+					<div v-for="plan in plans" :key="plan" class="into-two">
+						<img :src="plan.img" alt="" />
+						<div>
+							<h3>
+								{{ plan.title }}
+							</h3>
+							<p>
+								{{ plan.description }}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<h5>خدمات ما</h5>
+			</div>
 		</section>
-	</div>
+	</main>
 </template>
 
 <style lang="scss" scoped>
@@ -158,6 +202,58 @@ const services = ref([
 			p {
 				@apply text-10px tracking-tighter xl:pl-5 sm:text-14px;
 			}
+		}
+	}
+}
+
+.section-two {
+	@apply lg:flex lg:flex-col lg:justify-center lg:items-center xl:mt-55 2xl:mt-70;
+
+	.into-section {
+		@apply flex flex-col items-center relative md:flex-row sm:mt-10 md:mt-20 lg:w-768px xl:w-1380px 2xl:w-1550px;
+
+		.part-one {
+			@apply m-4 px-10 pt-5 pb-10 bg-#4362c1 sm:pr-20 sm:pl-15 sm:w-440px md:mr-0 xl:w-600px xl:pr-30 xl:py-21 2xl:w-768px 2xl:pr-50 2xl:pl-30;
+
+			.into-one {
+				@apply flex items-start mt-7 sm:mt-14;
+
+				h6 {
+					@apply text-white text-10px mb-5 sm:text-14px sm:mb-8;
+				}
+
+				p {
+					@apply text-10px text-gray-1 tracking-tighter sm:text-13px;
+				}
+			}
+		}
+
+		.part-two {
+			@apply m-4 space-y-7 sm:w-440px md:mr-2 md:space-y-12.2 xl:mr-30;
+
+			.into-two {
+				@apply flex items-center;
+
+				img {
+					@apply w-40% h-40% md:w-60% md:h-60%;
+				}
+
+				div {
+					@apply px-4 sm:px-7 md:px-3 xl:px-5 xl:pl-10;
+
+					h3 {
+						@apply text-12px mb-3 tracking-tight sm:text-18px;
+					}
+
+					p {
+						@apply text-10px tracking-tighter leading-5 sm:text-14px;
+					}
+				}
+			}
+		}
+
+		h5 {
+			@apply absolute left-21.7rem top-10 -rotate-90 md:block hidden xl:left-39.5rem 2xl:left-40rem;
 		}
 	}
 }
