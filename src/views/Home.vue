@@ -162,6 +162,65 @@ const plans = ref([
 				<h5>خدمات ما</h5>
 			</div>
 		</section>
+
+		<!-- THIRD SECTION -->
+		<section class="section-three">
+			<div>
+				<h1>پروژه‌های ما</h1>
+
+				<!-- TOP -->
+				<div>
+					<img src="../assets/images/img_12.jpg" alt="" w-full h-full />
+
+					<!--  -->
+					<div class="!m-0">
+						<h3>عنوان پروژه‌ ما</h3>
+						<p>
+							توضیحاتی درباره‌ی پروژه شما. شما می‌توانید با دابل کلیک روی این
+							قسمت متن مورد نظر خودتان را وارد کنید...
+						</p>
+					</div>
+				</div>
+
+				<!-- MIDD -->
+				<div>
+					<img
+						src="../assets/images/img_13.jpg"
+						alt=""
+						class="w-full h-full xl:hidden"
+					/>
+
+					<!--  -->
+					<div class="!m-0 !xl:pr-0">
+						<h3>عنوان پروژه‌ ما</h3>
+						<p>
+							توضیحاتی درباره‌ی پروژه شما. شما می‌توانید با دابل کلیک روی این
+							قسمت متن مورد نظر خودتان را وارد کنید...
+						</p>
+					</div>
+
+					<img
+						src="../assets/images/img_13.jpg"
+						alt=""
+						class="hidden w-full h-full xl:block"
+					/>
+				</div>
+
+				<!-- BOTTOM -->
+				<div>
+					<img src="../assets/images/img_14.jpg" alt="" w-full h-full />
+
+					<!--  -->
+					<div class="!m-0">
+						<h3>عنوان پروژه‌ ما</h3>
+						<p>
+							توضیحاتی درباره‌ی پروژه شما. شما می‌توانید با دابل کلیک روی این
+							قسمت متن مورد نظر خودتان را وارد کنید...
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
 	</main>
 </template>
 
@@ -254,6 +313,34 @@ const plans = ref([
 
 		h5 {
 			@apply absolute left-21.7rem top-10 -rotate-90 md:block hidden xl:left-39.5rem 2xl:left-40rem;
+		}
+	}
+}
+
+.section-three {
+	@apply flex items-center justify-center mt-10 xl:mt-20;
+
+	div {
+		@apply sm:w-460px md:w-680px xl:w-1028px;
+
+		h1 {
+			@apply text-center lg:text-32px sm:mb-10;
+		}
+
+		div {
+			@apply m-5 sm:m-0 sm:mb-10 xl:flex xl:items-end lg:m-0 lg:mb-12 xl:mb-25;
+
+			div {
+				@apply px-3 md:flex md:justify-between md:mt-2 lg:pr-0 xl:flex-col xl:items-start xl:pb-10 xl:pr-5;
+
+				h3 {
+					@apply text-16px mb-2 tracking-tight sm:text-22px xl:text-24px;
+				}
+
+				p {
+					@apply text-10px tracking-tighter leading-5 sm:text-14px md:w-sm;
+				}
+			}
 		}
 	}
 }

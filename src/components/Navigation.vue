@@ -69,7 +69,7 @@ header {
 		@apply flex-row justify-center hidden sm:my-5 xl:flex;
 
 		li {
-			@apply m-l-10 last:m-l-0 first:m-r-20;
+			@apply m-l-10 last:m-l-0 first:m-r-15;
 		}
 	}
 
