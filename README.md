@@ -1,27 +1,30 @@
-# This is KIAN wordpress template and i convert it to Vue.js with Unocss.
+<div id="top"></div>
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** Don't forget to give the project a star!
+-->
 
-## Recommended IDE Setup
+<br />
+<div align="center">
+  <a href="https://theme47.mywebzi.ir/">
+    <img src="./src/assets/images/kian.png" alt="Logo" width="80" height="80">
+  </a>
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
+  <h3 align="center">KIAN wordpress-to-vue</h3>
 
-## Customize configuration
+  <p align="center">
+   این قالب وردپرسی 'کیان تم' بود که بوسیله 
+    <a href="https://uno.antfu.me/">ٔUnocss</a>
+   کدنویسی مجددش کردم به ویوو‌جی‌اس.
+    <br />
+    <a href="https://github.com/Dellcash/Wordpress-to-Vue-KIAN-template">Mine Demo</a>
+    ·
+    <a href="https://theme47.mywebzi.ir/">Kian Demo</a>
+  </p>
+  </p>
+  
+  <br />
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+![js to vue](./src/assets/images/screen.png)
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+</div>

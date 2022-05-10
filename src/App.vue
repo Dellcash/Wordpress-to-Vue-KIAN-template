@@ -1,13 +1,17 @@
 <script setup>
-import { RouterView } from "vue-router";
+import { RouterView, useRoute } from "vue-router";
 import Navigation from "./components/Navigation.vue";
+
+const route = useRoute();
 </script>
 
 <template>
 	<Navigation />
-	<router-view v-slot="{ Component }">
+	<router-view v-slot="{ Component, route }">
 		<Transition name="fade" mode="out-in">
-			<component :is="Component" />
+			<div :key="route.name">
+				<component :is="Component" />
+			</div>
 		</Transition>
 	</router-view>
 </template>

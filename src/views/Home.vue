@@ -1,17 +1,21 @@
 <script setup>
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 
 // ICONS
 import building from "../assets/images/img_4.png";
 import note from "../assets/images/img_5.png";
 import pen from "../assets/images/img_6.png";
 import compass from "../assets/images/img_7.png";
+import Loading from "../components/Icons/Loading.vue";
 
 // SECTION TWO IMGs
 import firstImg from "../assets/images/img_8.jpg";
 import secImg from "../assets/images/img_9.jpg";
 import thridImg from "../assets/images/img_10.jpg";
 import forthImg from "../assets/images/img_11.jpg";
+import Telegram from "../components/Icons/Telegram.vue";
+import Instagram from "../components/Icons/Instagram.vue";
+import Whatsapp from "../components/Icons/Whatsapp.vue";
 
 const services = ref([
 	{
@@ -66,6 +70,67 @@ const plans = ref([
 			"موسسات آموزشی می توانند بسیار خلاق تر از مدرسه معمولی شما باشند ...",
 	},
 ]);
+
+const infos = ref([
+	"آدرس دفتر شما... <br /> نام شهر، نام منطقه، نام خیابان، پلاک شما",
+	"شماره تلفن خودتان را وارد کنید...",
+	"پشتیبانی: info@yourdomain.ir",
+	"فروش: sales@yourdomain.ir",
+]);
+
+const listOfServices = ref([
+	"طراحی داخلی",
+	"معماری",
+	"طراحی اتاق خاب",
+	"فضای داخل حمام",
+	"اتاق نشیمن",
+	"فضای داخل خانه",
+]);
+
+const form = reactive({
+	name: "",
+	nameErr: "",
+	email: "",
+	emailErr: "",
+	title: "",
+	content: "",
+	contentErr: "",
+});
+const loading = ref(false);
+const validation = () => {
+	if (form.name === "") {
+		form.nameErr = "لطفا نام خود را وارد کنید!";
+	} else {
+		form.nameErr = "";
+	}
+	if (form.email === "") {
+		form.emailErr = "لطفا پست الکترونیک خود را وارد کنید!";
+	} else {
+		form.emailErr = "";
+	}
+	if (form.content === "") {
+		form.contentErr = "لطفا پیغام بگذارید!";
+	} else {
+		form.contentErr = "";
+	}
+
+	if (form.name !== "" && form.email !== "" && form.content !== "") {
+		setTimeout(() => {
+			form.name = "";
+			form.email = "";
+			form.title = "";
+			form.content = "";
+		}, 2000);
+		loading.value = true;
+	}
+
+	// SIMULATE API REQUEST
+	setTimeout(() => {
+		loading.value = false;
+	}, 2000);
+};
+
+const follows = ref(["تلگرام", "واتس اپ", "اینستاگرام", "فیسبوک"]);
 </script>
 
 <template>
@@ -222,6 +287,110 @@ const plans = ref([
 			</div>
 		</section>
 	</main>
+
+	<footer class="bg-[rgb(68,68,68)]">
+		<!-- TOP -->
+		<section class="top">
+			<!-- FIRST -->
+			<div class="first">
+				<h1>با ما در ارتباط باشید</h1>
+				<p>
+					<strong text-gray-300
+						>از مشاوره رایگان با کارشناسان ما استفاده کنید!</strong
+					>
+				</p>
+				<div>
+					<Instagram xl:w-5rem />
+					<Telegram xl:w-5rem />
+					<Whatsapp xl:w-5rem />
+				</div>
+			</div>
+
+			<!-- SECOND -->
+			<div class="second">
+				<div></div>
+				<img src="../assets/images/img_16.png" alt="" />
+			</div>
+		</section>
+
+		<div sm="flex flex-col items-center justify-center">
+			<!-- BOTTOM -->
+			<section class="bottom">
+				<!-- FIRST -->
+				<div class="info">
+					<h4>تماس با ما</h4>
+					<h6 v-for="info in infos" :key="info" v-html="info"></h6>
+				</div>
+
+				<!-- SECOND -->
+				<div class="info">
+					<h4>لیست خدمات</h4>
+					<h6 v-for="list in listOfServices" :key="list" v-html="list"></h6>
+				</div>
+
+				<!-- THIRD -->
+				<div class="third">
+					<form @submit.prevent="validation">
+						<!-- NAME -->
+						<div>
+							<input v-model="form.name" type="text" placeholder="نام *" />
+							<p>{{ form.nameErr }}</p>
+						</div>
+
+						<!-- EMAIL -->
+						<div>
+							<input
+								v-model="form.email"
+								type="email"
+								placeholder="پست الکترونیک *"
+							/>
+							<p>{{ form.emailErr }}</p>
+						</div>
+
+						<!-- TITLE -->
+						<div>
+							<input v-model="form.title" type="text" placeholder="موضوع" />
+						</div>
+
+						<!-- CONTENT -->
+						<div>
+							<textarea
+								v-model="form.content"
+								id=""
+								cols="30"
+								rows="6"
+								placeholder="پیغام *"
+							></textarea>
+							<p>{{ form.contentErr }}</p>
+						</div>
+
+						<!-- SUBMIT -->
+						<button>
+							<Loading v-if="loading" animate-spin mt-5px />
+							<span v-else>ارسال</span>
+						</button>
+					</form>
+				</div>
+
+				<!-- FOURTH -->
+				<div class="info">
+					<h4>مارا دنبال کنید</h4>
+					<h6 v-for="follow in follows" :key="follow">
+						{{ follow }}
+					</h6>
+				</div>
+			</section>
+
+			<!-- COPYRIGHT -->
+			<section class="bg-[rgb(59,59,59)] sm:w-full">
+				<div text-center py-3>
+					<p text-10px text-gray-200 xl:text-12px>
+						تمامی حقوق این سایت متلق به <em text-gray-200>[ دلکش ]</em> می‌باشد.
+					</p>
+				</div>
+			</section>
+		</div>
+	</footer>
 </template>
 
 <style lang="scss" scoped>
@@ -269,7 +438,7 @@ const plans = ref([
 	@apply lg:flex lg:flex-col lg:justify-center lg:items-center xl:mt-55 2xl:mt-70;
 
 	.into-section {
-		@apply flex flex-col items-center relative md:flex-row sm:mt-10 md:mt-20 lg:w-768px xl:w-1380px 2xl:w-1550px;
+		@apply flex flex-col items-center relative md:flex-row sm:mt-10 md:mt-20 lg:w-768px xl:w-1280px 2xl:w-1550px;
 
 		.part-one {
 			@apply m-4 px-10 pt-5 pb-10 bg-#4362c1 sm:pr-20 sm:pl-15 sm:w-440px md:mr-0 xl:w-600px xl:pr-30 xl:py-21 2xl:w-768px 2xl:pr-50 2xl:pl-30;
@@ -339,6 +508,79 @@ const plans = ref([
 
 				p {
 					@apply text-10px tracking-tighter leading-5 sm:text-14px md:w-sm;
+				}
+			}
+		}
+	}
+}
+
+footer {
+	.top {
+		@apply relative bg-#4362c1 xl:mb-20 xl:h-32rem;
+
+		.first {
+			@apply absolute space-y-3 p-5 z-1 sm:p-10 lg:right-8rem lg:pt-20 xl:right-3rem xl:top-5rem xl:space-y-7;
+
+			h1 {
+				@apply text-3xl text-white -tracking-2px sm:text-5xl md:mr-3rem lg:-tracking-1px xl:mr-0;
+			}
+
+			p {
+				@apply text-12px -tracking-1px sm:text-20px md:mr-3rem xl:mr-0;
+			}
+
+			div {
+				@apply inline-block p-3 pb-1 bg-white sm:p-5 xl:py-1;
+			}
+		}
+
+		.second {
+			@apply pt-5rem sm:pt-6rem lg:pt-8rem xl:pt-0;
+
+			div {
+				@apply absolute bg-gray-400 h-50vw w-80% z-0 left-0 top-10rem 
+					sm:h-70vw sm:top-14rem md:h-50vw md:w-85% lg:left-30 lg:w-65% lg:h-40vw lg:top-16rem xl:w-35% xl:h-40vw xl:top-3rem;
+			}
+
+			img {
+				@apply z-10 w-full relative h-full
+					md:w-85% md:h-85% md:right-7rem lg:w-65% lg:h-65% lg:right-15rem xl:w-50% xl:h-50% xl:right-33rem;
+			}
+		}
+	}
+
+	.bottom {
+		@apply p-10 space-y-15 sm:w-320px md:px-20 md:w-768px md:space-y-0 md:grid md:grid-cols-2 md:gap-15 xl:grid-cols-4 xl:w-1280px xl:mt-7rem;
+
+		.info {
+			@apply space-y-5 md:space-y-7;
+
+			h4 {
+				@apply text-gray-200 md:text-xl;
+			}
+
+			h6 {
+				@apply text-gray-200 font-thin md:text-sm;
+			}
+		}
+		.third {
+			form {
+				@apply bg-transparent space-y-2;
+
+				input {
+					@apply w-full bg-transparent border-gray-200 text-gray-200 placeholder-gray-400 text-xs p-2 mb-1;
+				}
+
+				p {
+					@apply text-10px text-red;
+				}
+
+				textarea {
+					@apply w-full bg-transparent border-gray-200 text-gray-200 placeholder-gray-400 text-xs p-2;
+				}
+
+				button {
+					@apply text-gray-800 bg-gray-200 text-xs py-1 px-3 duration-250 hover:opacity-80 focus:outline-none;
 				}
 			}
 		}
