@@ -17,7 +17,7 @@
     <a href="https://uno.antfu.me/">ٔUnocss</a>
    کدنویسی مجددش کردم به ویوو‌جی‌اس.
     <br />
-    <a href="https://github.com/Dellcash/Wordpress-to-Vue-KIAN-template">Mine Demo</a>
+    <a href="https://wordpress-to-vue-1.netlify.app/">Mine Demo</a>
     ·
     <a href="https://theme47.mywebzi.ir/">Kian Demo</a>
   </p>
